@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 
 // Grouper l'application par le puffix "gestion"
-Route::prefix('gestion', function () {
+Route::group(['prefix' => 'gestion'], function () {
 
-    Route::resources('clients', ClientController::class);
+    Route::resource('clients', ClientController::class);
+    Route::resource('users', UserController::class);
 
 });

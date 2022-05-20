@@ -1,5 +1,4 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
-<script src="main.js"></script>
 <script>
     const body = document.querySelector('body'),
         sidebar = body.querySelector('nav'),

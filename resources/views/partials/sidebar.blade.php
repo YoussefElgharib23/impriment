@@ -6,7 +6,7 @@
             </span>
 
             <div class="text logo-text">
-                <span class="name">Impriment</span>
+                <span class="name">{{ env('APP_NAME') }}</span>
                 <span class="profession">Agadir</span>
             </div>
         </div>
@@ -20,13 +20,13 @@
             </li>
             <ul class="menu-links">
                 <li class="nav-link">
-                    <a href="gestion.html">
+                    <a href="{{ route('users.index') }}">
                         <i class="bx bx-home-alt icon"></i>
                         <span class="text nav-text">Gestion utlisateur</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="client.html">
+                    <a href="{{ route('clients.index') }}">
                         <i class="bx bx-bar-chart-alt-2 icon"></i>
                         <span class="text nav-text">Gestion client</span>
                     </a>

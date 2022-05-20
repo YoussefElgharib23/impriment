@@ -6,17 +6,17 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class ClientController extends Controller
+class UserController extends Controller
 {
     public function index()
     {
-        $clients = User::latest()->where('role', 'client')->get();
-        return view('clients.index', compact('clients'));
+        $users = User::where('role', 'admin')->latest()->get();
+        return view('users.index', compact('users'));
     }
 
     public function create()
     {
-        return view('clients.create');
+        return view('users.create');
     }
 
     public function store(Request $request)
@@ -56,24 +56,24 @@ class ClientController extends Controller
         $password = $data['password'];
         $hashedPassword = Hash::make($password);
 
-        // Creer un client
+        // Creer un user
         User::create(array_merge(
             $data,
             [
                 'password' => $hashedPassword,
-                'role' => 'client',
+                'role' => 'admin',
             ]
         ));
         
-        return redirect()->route('clients.index');
+        return redirect()->route('users.index');
     }
 
-    public function edit(User $client)
+    public function edit(User $user)
     {
-        return view('clients.edit', compact('client'));
+        return view('users.edit', compact('user'));
     }
 
-    public function update(Request $request, User $client)
+    public function update(Request $request, User $user)
     {
         // Valider les donnes envoyees par utilisateur
         $data = $request->validate([
@@ -89,14 +89,14 @@ class ClientController extends Controller
                 'email',
                 'min:7',
                 'max:255',
-                'unique:users,email,' . $client->id . ',id',
+                'unique:users,email,' . $user->id . ',id',
             ],
             'phone' => [
                 'required',
                 'string',
                 'min:7',
                 'max:255',
-                'unique:users,email,' . $client->id . ',id',
+                'unique:users,email,' . $user->id . ',id',
             ],
             'password' => [
                 'nullable',
@@ -106,7 +106,7 @@ class ClientController extends Controller
             ],
         ]);
 
-        $hashedPassword = $client->password;
+        $hashedPassword = $user->password;
 
         if ($data['password']) {
             // Encoder le mot de passe
@@ -114,21 +114,21 @@ class ClientController extends Controller
             $hashedPassword = Hash::make($password);
         } 
 
-        // Creer un client
-        $client->update(array_merge(
+        // Creer un user
+        $user->update(array_merge(
             $data,
             [
                 'password' => $hashedPassword,
-                'role' => 'client',
+                'role' => 'admin',
             ]
         ));
         
-        return redirect()->route('clients.index');
+        return redirect()->route('users.index');
     }
 
-    public function destroy(User $client)
+    public function destroy(User $user)
     {
-        $client->delete();
-        return redirect()->route('clients.index');
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }
