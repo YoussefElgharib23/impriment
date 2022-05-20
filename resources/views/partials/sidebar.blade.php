@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="{{ route('products.index') }}">
                         <i class="bx bx-bell icon"></i>
                         <span class="text nav-text">Gestion produit</span>
                     </a>
@@ -47,10 +47,14 @@
         </div>
         <div class="bottom-content">
             <li class="">
-                <a href="#">
+                <a href="javascript:;"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
                     <i class="bx bx-log-out icon"></i>
                     <span class="text nav-text">Logout</span>
                 </a>
+                <form action="/logout" method="POST" id="logout-form">
+                    @csrf
+                </form>
             </li>
             <li class="mode">
                 <div class="sun-moon">
