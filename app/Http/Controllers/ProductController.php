@@ -30,6 +30,11 @@ class ProductController extends Controller
                 'min:3',
                 'max:255',
             ],
+            'description' => [
+                'required',
+                'string',
+                'min:3',
+            ],
             'price' => [
                 'required',
                 'numeric',
@@ -75,6 +80,11 @@ class ProductController extends Controller
                 'min:3',
                 'max:255',
             ],
+            'description' => [
+                'required',
+                'string',
+                'min:3',
+            ],
             'price' => [
                 'required',
                 'numeric',
@@ -84,7 +94,7 @@ class ProductController extends Controller
                 'numeric',
             ],
             'image' => [
-                'required',
+                'nullable',
                 'image',
             ],
             'reference' => [
@@ -113,5 +123,10 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect()->route('products.index');
+    }
+
+    public function details(Product $product)
+    {
+        return view('products.details', compact('product'));
     }
 }

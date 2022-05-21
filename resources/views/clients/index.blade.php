@@ -33,7 +33,7 @@
                     <tbody>
 
                         @foreach ($clients as $client)
-                            <tr>
+                            <tr id="{{ $client->id }}">
                                 <td>
                                     {{ $client->id }}
                                 </td>
@@ -50,10 +50,11 @@
                                     <a href="{{ route('clients.edit', $client) }}" class="btn btn-primary">
                                         Edit
                                     </a>
-                                    <form style="display: inline-block" action="{{ route('clients.destroy', $client) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger">Delete</button>
+                                    <form style="display: inline-block" action="{{ route('clients.destroy', $client) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger">Delete</button>
                                     </form>
                                 </td>
                             </tr>

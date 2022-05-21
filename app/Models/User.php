@@ -34,4 +34,9 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function commands()
+    {
+        return $this->hasMany(Command::class, 'client_id');
+    }
 }

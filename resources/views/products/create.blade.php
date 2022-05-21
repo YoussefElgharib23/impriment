@@ -32,6 +32,14 @@
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="form-floating mb-3">
+                            <textarea rows="100" name="description" class="form-control @error('description') is-invalid @enderror" id="description"
+                                placeholder="description">{{ old('description') }}</textarea>
+                            <label for="description">Description</label>
+                            @error('description')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
                         <div class="mb-3">
                             <label for="image">Image</label>
                             <input name="image" class="form-control @error('image') is-invalid @enderror" id="image"
