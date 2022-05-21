@@ -10,4 +10,6 @@
 
 `6 - php artisan db:seed AdminUserSeeder`
 
-`7 - php artisan serve`
+`7 - php artisan storage:link`
+
+`8 - php artisan serve`
